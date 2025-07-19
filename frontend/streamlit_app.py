@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # UI  code
-=======
 
 import streamlit as st
 import requests
@@ -58,4 +56,3 @@ if uploaded_file:
             st.session_state['result'] = result
             st.session_state['image_bytes'] = uploaded_file.getvalue()
             st.switch_page("pages/freshness_detector.py")
->>>>>>> c2112d91602580c89fac6ee0fa80e4acfb44fd97
