@@ -1,11 +1,14 @@
 # build  your api
-from flask import Flask, request, jsonify
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
+from PIL import Image
 import numpy as np
 import pickle
-from PIL import Image
 import io
 import os
 
-#instance 
-app = Flask(_name_)
-
+# -----------------------------------------------
+# Initialize FastAPI application
+# -----------------------------------------------
+app = FastAPI(title=" Food Freshness Detector API")
