@@ -4,15 +4,23 @@ import streamlit as st
 import requests
 from PIL import Image
 from io import BytesIO
-import pathlib
+from pathlib import Path
 # Simulate a backend delay
 import random
 import time
 
 # Inject external CSS
-def load_local_css(file_path="static/style.css"):
-    with open(file_path) as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+def load_local_css():
+    # Get the directory where this script is located
+    script_dir = Path(__file__).parent
+    # Construct the full path to the CSS file
+    css_path = script_dir / "static" / "style.css"
+    
+    try:
+        with open(css_path) as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except FileNotFoundError:
+        st.error(f"CSS file not found at: {css_path}")
 
 # Call this before rendering your layout
 load_local_css()
