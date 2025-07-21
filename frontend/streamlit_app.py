@@ -9,10 +9,7 @@ from pathlib import Path
 import random
 import time
 
-<<<<<<< HEAD
 # Inject external CSS
-=======
->>>>>>> b92db61919f3c3f852be1b295cd6f7a380b48881
 def load_local_css():
     # Get the directory where this script is located
     script_dir = Path(__file__).parent
@@ -24,10 +21,7 @@ def load_local_css():
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     except FileNotFoundError:
         st.error(f"CSS file not found at: {css_path}")
-<<<<<<< HEAD
 
-=======
->>>>>>> b92db61919f3c3f852be1b295cd6f7a380b48881
 # Call this before rendering your layout
 load_local_css()
 
