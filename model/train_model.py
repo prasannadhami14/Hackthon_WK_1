@@ -4,7 +4,7 @@ import cv2
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import pickle
-
+from pathlib import Path
 # Load images and labels from folder
 def load_data(data_dir):
     X, y = [], []
@@ -24,7 +24,9 @@ def load_data(data_dir):
     return np.array(X), np.array(y)
 
 # Training
-X, y = load_data('../Dataset')
+data_dir = Path(__file__).parent.parent / 'Dataset'  # Absolute path
+
+X, y = load_data(data_dir)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
@@ -37,4 +39,4 @@ print(f"Model Accuracy: {accuracy * 100:.2f}%")
 # Save model
 os.makedirs("model", exist_ok=True)
 with open("model/trained_model.pkl", "wb") as f:
-    pickle.dump(model, f)
+    pickle.dump({"model": model, "accuracy": accuracy}, f)
