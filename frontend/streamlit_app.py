@@ -20,6 +20,7 @@ def load_local_css():
             st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     except FileNotFoundError:
         st.error(f"CSS file not found at: {css_path}")
+
 # Call this before rendering your layout
 load_local_css()
 
